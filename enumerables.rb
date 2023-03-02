@@ -66,11 +66,21 @@ end
 # Buffalo Wings (American) | Heat Level: 🌶🌶🌶
 # HINT: Try to use methods you've already written to solve this!
 def print_spiciest_foods(spicy_foods)
-  # your code here
+  spiciest_food = spicy_foods.filter { |food| food[:heat_level] > 5}
+
+  printed_spicy_foods = spiciest_food.map do |food|
+    chili_level = "🌶"  * food[:heat_level]
+    puts "#{food[:name]} (#{food[:cuisine]}) | Heat Level: #{chili_level}"
+  end
 end
 
 # given an array of spicy foods, return an integer representing 
 # the average heat level of all the spicy foods in the array
 def average_heat_level(spicy_foods)
-  # your code here
+  spicy_total = 0
+  spicy_foods.each do |food|
+    spicy_total = spicy_total + food[:heat_level]
+  end
+  spicy_avg = spicy_total / spicy_foods.size
+  return spicy_avg
 end
